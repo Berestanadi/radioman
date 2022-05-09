@@ -16,6 +16,7 @@ class RadioTest {
 
         assertEquals(expected,actual);
     }
+
     @Test
     void shouldSetCurrentStationOverInvalidStation() {
         Radio radio = new Radio();
@@ -27,6 +28,16 @@ class RadioTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    void shouldSetCurrentStationUnderInvalidStation() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation (-1);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        assertEquals(expected,actual);
+    }
 
     @Test
     void shouldSetNextStation() {
@@ -82,8 +93,31 @@ class RadioTest {
 
         radio.setCurrentVolume (5);
         int expected = 5;
+        int actual = radio.getCurrentVolume();
 
-        assertEquals(expected,radio.getCurrentVolume());
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void shouldSetCurrentUnderMinVolume() {
+        Radio radio = new Radio();
+
+        radio.setCurrentVolume (-2);
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void shouldSetCurrentOverMaxVolume() {
+        Radio radio = new Radio();
+
+        radio.setCurrentVolume(55);
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        assertEquals(expected, actual);
     }
 
     @Test
