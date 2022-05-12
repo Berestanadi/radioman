@@ -8,7 +8,13 @@ class RadioTest {
 
     @Test
     void  shouldTestConstructorNumberStation() {
-        Radio radio = new Radio(10);
+        Radio radio = new Radio(20);
+
+        radio.setCurrentStation(15);
+        int expected = 15;
+        int actual = radio.getCurrentStation();
+
+        assertEquals(expected,actual);
     }
 
     @Test
